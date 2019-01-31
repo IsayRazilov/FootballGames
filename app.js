@@ -1,49 +1,26 @@
-var express = require('express');
-var bodyParser = require("body-parser");
+var express        = require("express"),
+    mongoose       = require("mongoose"),
+    bodyParser     = require("body-parser"),
+    methodOverride = require("method-override"),
+    User           = require("./models/user")
+
 
 var app = express();
 
-
+mongoose.connect("mongodb://aciles1221:qwerty1221@ds143474.mlab.com:43474/footballgames");
 app.use(bodyParser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
 
-
-// app.get('/', function (req, res) {
-   
-//     var sql = require("mssql");
-
-//     // config for your database
-//     var config = {
-//         user: 'sa',
-//         password: 'mypassword',
-//         server: 'localhost', 
-//         database: 'SchoolDB' 
-//     };
-
-//     // connect to your database
-//     sql.connect(config, function (err) {
-    
-//         if (err) console.log(err);
-
-//         // create Request object
-//         var request = new sql.Request();
-           
-//         // query to the database and get the records
-//         request.query('select * from Student', function (err, recordset) {
-            
-//             if (err) console.log(err)
-
-//             // send records as a response
-//             res.send(recordset);
-            
-//         });
-//     });
-// });
 
 app.get('/',function(req,res){
     res.render('home');
 });
 
-var server = app.listen(3000, function () {
-    console.log('Server is running..');
+app.listen(3000,function(){
+    console.log("Server started at port 3000");
 });
+
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log("The YelpCamp Server Has Started!");
+// });

@@ -1,0 +1,27 @@
+{
+  "name": "footballgames",
+  "version": "1.0.0",
+  "description": "Work football games stats",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsayRazilov/FootballGames.git"
+  },
+  "author": "Isay Razilov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsayRazilov/FootballGames/issues"
+  },
+  "homepage": "https://github.com/IsayRazilov/FootballGames#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.4.8"
+  }
+}

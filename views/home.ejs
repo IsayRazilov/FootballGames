@@ -14,38 +14,25 @@
         <h1 class="m-5 p-5">Games Statistics</h1>
     <table class="table">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Player</th>
-            <th scope="col">Won</th>
-            <th scope="col">Lost</th>
-            <th scope="col">Win percentge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Aganya</td>
-            <td>20</td>
-            <td>12</td>
-            <td>50%</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Isay</td>
-            <td>22</td>
-            <td>1</td>
-            <td>99%</td>
-
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Liron</td>
-            <td>24</td>
-            <td>2</td>
-            <td>95%</td>
-          </tr>
-        </tbody>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Player</th>
+              <th scope="col">Won</th>
+              <th scope="col">Lost</th>
+              <th scope="col">Win percentge</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% users.forEach(function(user,index){ %> 
+            <tr>
+                <th scope="row"><%= index %></th>
+                <td><%= user.username %></td>
+                <td><%= user.won %></td>
+                <td><%= user.gamesPlayed - user.won %></td>
+                <td><%= user.won/user.gamesPlayed %></td>
+            </tr>
+          <% }) %> 
+          </tbody>
       </table>
     </div>
 </body>

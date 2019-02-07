@@ -17,23 +17,59 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Player</th>
+              <th scope="col">Played</th>
               <th scope="col">Won</th>
               <th scope="col">Lost</th>
               <th scope="col">Win percentge</th>
             </tr>
           </thead>
           <tbody>
-          <% users.forEach(function(user,index){ %> 
+          <% users.sort(function(a,b){ return (b.won/b.gamesPlayed) - (a.won/a.gamesPlayed) }) %>
+          <% users.forEach(function(user,index){ %>
             <tr>
-                <th scope="row"><%= index %></th>
+                <th scope="row"><%= index+1%></th>
                 <td><%= user.username %></td>
+                <td><%= user.gamesPlayed %></td>
                 <td><%= user.won %></td>
                 <td><%= user.gamesPlayed - user.won %></td>
-                <td><%= user.won/user.gamesPlayed %></td>
+                <td><%= (user.won/user.gamesPlayed*100).toFixed(2) %>%</td>
             </tr>
           <% }) %> 
           </tbody>
       </table>
+            <div class="card text-center mx-5 my-5">
+                <div class="card-header">
+                  <h4>Add new game</h4> 
+                </div>
+                <div class="card-body">
+                       <form action="/" method="post">
+                        <select name="user[won]"class="form-control my-3">
+                            <option > Won </option>
+                            <option>Isay</option>
+                            <option>Aganya</option>
+                            <option>Liron</option>
+                            <option>Amir</option>
+                            <option>Sarit</option>
+                            <option>Zion</option>
+                            <option>Moti</option>
+                        </select>
+                         <select name="user[lost]"class="form-control my-3">
+                            <option > Lost </option>
+                            <option>Isay</option>
+                            <option>Aganya</option>
+                            <option>Liron</option>
+                            <option>Amir</option>
+                            <option>Sarit</option>
+                            <option>Zion</option>
+                            <option>Moti</option>
+                        </select>
+                        <button class="btn btn-primary btn-lg"> Sumbit </button>
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                  <i class="fas fa-futbol fa-lg"></i> <i class="fas fa-basketball-ball fa-lg"></i> <i class="fas fa-futbol fa-lg"></i> <i class="fas fa-basketball-ball fa-lg"></i> <i class="fas fa-futbol fa-lg"></i>
+                </div>
+            </div>
     </div>
 </body>
 </html>

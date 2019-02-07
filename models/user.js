@@ -4,8 +4,8 @@ var mongoose = require("mongoose");
 
 var UserSchema = new mongoose.Schema({
     username: String, 
-    gamesPlayed: String,
-    won: String
+    gamesPlayed: Number,
+    won: Number
 });
 
 // UserSchema.plugin(passportLocalMongoose);

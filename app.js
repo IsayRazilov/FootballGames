@@ -23,55 +23,48 @@ app.get("/",function(req,res){
     });
 });
 
+app.post("/",function(req,res){
+    
+    User.findOneAndUpdate({"username":req.body.user.won},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
+        if(err) {
+            console.log(err) ;
+        } else {
+            User.findOneAndUpdate({"username":req.body.user.lost},{ $inc : { gamesPlayed: 1 } },function(err,user){
+                if(err){
+                    console.log(err)
+                } else {
+                    User.find({},function(err,users){
+                        if(err) {
+                            console.log(err) ;
+                        } else {
+                            res.render("home",{ users: users});
+                        }
+                    });
+                }
+            });
+        }
+    });
 
-var user = new User({
-    username: "Isay", 
-    gamesPlayed: "30",
-    won: "15"
 });
 
 
-user.save(function(err,user){
-    if(err){
-        console.log("Error");
-    }else {
-        console.log("Added user");
-        console.log(user);
-    }
-})
-
-var user = new User({
-    username: "Aganya", 
-    gamesPlayed: "30",
-    won: "15"
-});
+// var user = new User({
+//     username: "Moti", 
+//     gamesPlayed: 1,
+//     won: 1
+// });
 
 
-user.save(function(err,user){
-    if(err){
-        console.log("Error");
-    }else {
-        console.log("Added user");
-        console.log(user);
-    }
-})
+// user.save(function(err,user){
+//     if(err){
+//         console.log("Error");
+//     }else {
+//         console.log("Added user");
+//         console.log(user);
+//     }
+// })
 
 
-var user = new User({
-    username: "Liron", 
-    gamesPlayed: "30",
-    won: "15"
-});
-
-
-user.save(function(err,user){
-    if(err){
-        console.log("Error");
-    }else {
-        console.log("Added user");
-        console.log(user);
-    }
-})
 
 // app.listen(3000,function(){
 //     console.log("Server started at port 3000");

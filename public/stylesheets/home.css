@@ -5,6 +5,11 @@ body{
 
 }
 
+h1 {
+    font-weight: 600; 
+    font-size: 1.7em; 
+}
+
 .background-image {
     background-image: url(../images/football_cover.jpg);  
     position: absolute; 
@@ -15,4 +20,12 @@ body{
     height: 100% ; 
     background-size: cover;
     z-index: -1 ;
+}
+
+.fa-futbol {
+  color: blue;
+}
+
+.fa-basketball-ball {
+    color: red;
 }

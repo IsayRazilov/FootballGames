@@ -18,32 +18,60 @@ app.get("/",function(req,res){
         if(err) {
             console.log(err) ;
         } else {
-            res.render("home",{ users: users});
+            res.render("home",{ users: users, error: "false"});
         }
     });
 });
 
 app.post("/",function(req,res){
     
-    User.findOneAndUpdate({"username":req.body.user.won},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
-        if(err) {
-            console.log(err) ;
-        } else {
-            User.findOneAndUpdate({"username":req.body.user.lost},{ $inc : { gamesPlayed: 1 } },function(err,user){
+    if (req.body.password != "@gany@") {
+        User.find({},function(err,users){
+            if(err) {
+                console.log(err) ;
+            } else {
+                res.render("home",{ users: users, error: "true" });
+            }
+        });
+    } else {
+            // update first . 
+        User.findOneAndUpdate({"username":req.body.won1},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
+            if(err) {
+                console.log(err) ;
+            } 
+            User.findOneAndUpdate({"username":req.body.lost1},{ $inc : { gamesPlayed: 1 } },function(err,user){
                 if(err){
                     console.log(err)
-                } else {
-                    User.find({},function(err,users){
-                        if(err) {
-                            console.log(err) ;
-                        } else {
-                            res.render("home",{ users: users});
-                        }
-                    });
-                }
+                } 
+                User.find({},function(err,users){
+                    if(err) {
+                        console.log(err) ;
+                    } else {
+                        res.render("home",{ users: users,error: "false"});
+                    }
+                });
             });
-        }
-    });
+        });
+        
+        // update second 
+        User.findOneAndUpdate({"username":req.body.won2},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
+            if(err) {
+                console.log(err) ;
+            } 
+            User.findOneAndUpdate({"username":req.body.lost2},{ $inc : { gamesPlayed: 1 } },function(err,user){
+                if(err){
+                    console.log(err)
+                } 
+                User.find({},function(err,users){
+                    if(err) {
+                        console.log(err) ;
+                    } else {
+                        res.render("home",{ users: users,error: "false"});
+                    }
+                });
+            });
+        });
+    }
 
 });
 

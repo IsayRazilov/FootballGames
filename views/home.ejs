@@ -11,7 +11,7 @@
 <body>
     <div class="background-image"></div>
     <div class="container text-center">
-        <h1 class="m-5 p-5">Games Statistics</h1>
+        <h1 class="m-3 p-3">Games Statistics</h1>
     <table class="table">
         <thead>
             <tr>
@@ -24,6 +24,12 @@
             </tr>
           </thead>
           <tbody>
+
+          <% if(error == "true") { %>
+            <script>-->
+               alert("Fuck you");
+          </script>
+          <% } %>
           <% users.sort(function(a,b){ return (b.won/b.gamesPlayed) - (a.won/a.gamesPlayed) }) %>
           <% users.forEach(function(user,index){ %>
             <tr>
@@ -39,30 +45,69 @@
       </table>
             <div class="card text-center mx-5 my-5">
                 <div class="card-header">
-                  <h4>Add new game</h4> 
+                <div>Add New Game</div>
                 </div>
                 <div class="card-body">
                        <form action="/" method="post">
-                        <select name="user[won]"class="form-control my-3">
-                            <option > Won </option>
-                            <option>Isay</option>
-                            <option>Aganya</option>
-                            <option>Liron</option>
-                            <option>Amir</option>
-                            <option>Sarit</option>
-                            <option>Zion</option>
-                            <option>Moti</option>
-                        </select>
-                         <select name="user[lost]"class="form-control my-3">
-                            <option > Lost </option>
-                            <option>Isay</option>
-                            <option>Aganya</option>
-                            <option>Liron</option>
-                            <option>Amir</option>
-                            <option>Sarit</option>
-                            <option>Zion</option>
-                            <option>Moti</option>
-                        </select>
+                        <div> Won Players </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <select name="won1"class="form-control my-3">
+                                    <option disabled selected > Player1 </option>
+                                    <option>None</option>
+                                    <option>Isay</option>
+                                    <option>Aganya</option>
+                                    <option>Liron</option>
+                                    <option>Amir</option>
+                                    <option>Sarit</option>
+                                    <option>Zion</option>
+                                    <option>Moti</option>
+                                </select>
+                            </div>
+                         <div class="col">
+                             <select name="won2"class="form-control my-3">
+                                <option disabled selected> Player2 </option>
+                                <option>None</option>
+                                <option>Isay</option>
+                                <option>Aganya</option>
+                                <option>Liron</option>
+                                <option>Amir</option>
+                                <option>Sarit</option>
+                                <option>Zion</option>
+                                <option>Moti</option>
+                            </select>
+                        </div>
+                        </div>
+                        <div> Lost Players </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <select name="lost1"class="form-control my-3">
+                                    <option disabled selected > Player1 </option>
+                                    <option>None</option>
+                                    <option>Isay</option>
+                                    <option>Aganya</option>
+                                    <option>Liron</option>
+                                    <option>Amir</option>
+                                    <option>Sarit</option>
+                                    <option>Zion</option>
+                                    <option>Moti</option>
+                                </select>
+                            </div>
+                         <div class="col">
+                             <select name="lost2"class="form-control my-3">
+                                <option disabled selected> Player2 </option>
+                                <option>None</option>
+                                <option>Isay</option>
+                                <option>Aganya</option>
+                                <option>Liron</option>
+                                <option>Amir</option>
+                                <option>Sarit</option>
+                                <option>Zion</option>
+                                <option>Moti</option>
+                            </select>
+                        </div>
+                        </div>
+                        <input name="password" type="password" class="form-control my-3" placeholder="Password">
                         <button class="btn btn-primary btn-lg"> Sumbit </button>
                     </form>
                 </div>

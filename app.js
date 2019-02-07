@@ -34,43 +34,35 @@ app.post("/",function(req,res){
             }
         });
     } else {
-            // update first . 
-        User.findOneAndUpdate({"username":req.body.won1},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
-            if(err) {
-                console.log(err) ;
-            } 
-            User.findOneAndUpdate({"username":req.body.lost1},{ $inc : { gamesPlayed: 1 } },function(err,user){
-                if(err){
-                    console.log(err)
-                } 
-                User.find({},function(err,users){
-                    if(err) {
-                        console.log(err) ;
-                    } else {
-                        res.render("home",{ users: users,error: "false"});
-                    }
-                });
-            });
-        });
         
-        // update second 
-        User.findOneAndUpdate({"username":req.body.won2},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
-            if(err) {
-                console.log(err) ;
-            } 
-            User.findOneAndUpdate({"username":req.body.lost2},{ $inc : { gamesPlayed: 1 } },function(err,user){
-                if(err){
-                    console.log(err)
+        if ( req.body.won1 != "None") {
+            User.findOneAndUpdate({"username":req.body.won1},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
+                if(err) {
+                    console.log(err) ;
                 } 
-                User.find({},function(err,users){
-                    if(err) {
-                        console.log(err) ;
-                    } else {
-                        res.render("home",{ users: users,error: "false"});
-                    }
-                });
             });
-        });
+        }
+        if(req.body.won2 != "None") {
+            User.findOneAndUpdate({"username":req.body.won2},{ $inc : { gamesPlayed: 1 ,won: 1} },function(err,user){
+                if(err) {
+                    console.log(err) ;
+                } 
+            });
+        }
+        if ( req.body.lost1 != "None") {
+            User.findOneAndUpdate({"username":req.body.lost1},{ $inc : { gamesPlayed: 1 } },function(err,user){
+                if(err) {
+                    console.log(err) ;
+                } 
+            });
+        }
+        if(req.body.lost2 != "None") {
+            User.findOneAndUpdate({"username":req.body.lost2},{ $inc : { gamesPlayed: 1 } },function(err,user){
+                if(err) {
+                    console.log(err) ;
+                } 
+            });
+        }
     }
 
 });

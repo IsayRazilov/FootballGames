@@ -117,12 +117,11 @@
                 </div>
 
             </div>
-              <% var date = new Date();  %> 
               <% games.forEach(function(game,index){ %>
                 <div class="alert alert-primary" role="alert">
                   Won: <%= PrintPlayers(game.firstWon,game.secondWon) %> 
                   Lost: <%= PrintPlayers(game.firstLost,game.secondLost) %> </br>
-                  <%= date.toDateString() %>
+                  <%= game.date %>
                 </div>
               <% }) %> 
 

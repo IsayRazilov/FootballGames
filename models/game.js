@@ -6,7 +6,8 @@ var GameSchema = new mongoose.Schema({
     firstWon: String, 
     secondWon: String, 
     firstLost: String, 
-    secondLost: String
+    secondLost: String,
+    date: String
 });
 
 // UserSchema.plugin(passportLocalMongoose);

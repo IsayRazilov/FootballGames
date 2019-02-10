@@ -71,11 +71,13 @@ app.post("/",function(req,res){
             });
         }
         
+        var date = new Date();
         var newGame = new Game({
             firstWon: req.body.won1, 
             secondWon: req.body.won2, 
             firstLost: req.body.lost1, 
-            secondLost: req.body.lost2
+            secondLost: req.body.lost2,
+            date: date.toDateString() 
         });
         
         

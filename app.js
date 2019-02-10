@@ -2,7 +2,8 @@ var express        = require("express"),
     mongoose       = require("mongoose"),
     bodyParser     = require("body-parser"),
     methodOverride = require("method-override"),
-    User           = require("./models/user")
+    User           = require("./models/user"),
+    Game           = require("./models/game")
 
 
 var app = express();
@@ -18,7 +19,13 @@ app.get("/",function(req,res){
         if(err) {
             console.log(err) ;
         } else {
-            res.render("home",{ users: users, error: "false"});
+            Game.find({},function(err, games) {
+               if(err) {
+                   console.log(err) ;
+               } else {
+                   res.render("home",{ users: users, error: "false", games:games });
+               }
+            });
         }
     });
 });
@@ -63,6 +70,20 @@ app.post("/",function(req,res){
                 } 
             });
         }
+        
+        var newGame = new Game({
+            firstWon: req.body.won1, 
+            secondWon: req.body.won2, 
+            firstLost: req.body.lost1, 
+            secondLost: req.body.lost2
+        });
+        
+        
+        newGame.save(function(err,user){
+            if(err){
+                console.log("Error");
+            }
+        })
     }
 
 });
@@ -84,7 +105,19 @@ app.post("/",function(req,res){
 //     }
 // })
 
+// var newGame = new Game({
+//     firstWon: "x", 
+//     secondWon: "x", 
+//     firstLost: "x", 
+//     secondLost: "x"
+// });
 
+
+// newGame.save(function(err,user){
+//     if(err){
+//         console.log("Error");
+//     }
+// })
 
 // app.listen(3000,function(){
 //     console.log("Server started at port 3000");

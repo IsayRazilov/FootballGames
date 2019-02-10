@@ -114,7 +114,16 @@
                 <div class="card-footer text-muted">
                   <i class="fas fa-futbol fa-lg"></i> <i class="fas fa-basketball-ball fa-lg"></i> <i class="fas fa-futbol fa-lg"></i> <i class="fas fa-basketball-ball fa-lg"></i> <i class="fas fa-futbol fa-lg"></i>
                 </div>
+
             </div>
+              <% count = 0 %> 
+              <% games.forEach(function(game,index){ %>
+                <div class="alert alert-primary" role="alert">
+                  Won: <%= game.firstWon %> and <%= game.secondWon %> </br>
+                  Lost: <%= game.firstLost %> and <%= game.secondLost %> 
+                </div>
+              <% }) %> 
+
     </div>
 </body>
 </html>

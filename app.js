@@ -84,6 +84,19 @@ app.post("/",function(req,res){
                 console.log("Error");
             }
         })
+        User.find({},function(err,users){
+            if(err) {
+                console.log(err) ;
+            } else {
+                Game.find({},function(err, games) {
+                   if(err) {
+                       console.log(err) ;
+                   } else {
+                       res.render("home",{ users: users, error: "false", games:games });
+                   }
+                });
+            }
+        });
     }
 
 });

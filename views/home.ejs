@@ -28,7 +28,7 @@
 
           <% if(error == "true") { %>
             <script>-->
-               alert("Fuck you");
+               alert("Wrong password");
           </script>
           <% } %>
           <% users.sort(function(a,b){ return (b.won/b.gamesPlayed) - (a.won/a.gamesPlayed) }) %>
@@ -117,12 +117,16 @@
                 </div>
 
             </div>
+              <div class="my-3"> Last 5 games </div>
+              <% var toDisplay = games.length - 5 %>
               <% games.forEach(function(game,index){ %>
-                <div class="alert alert-primary" role="alert">
-                  Won: <%= PrintPlayers(game.firstWon,game.secondWon) %> 
-                  Lost: <%= PrintPlayers(game.firstLost,game.secondLost) %> </br>
-                  <%= game.date %>
-                </div>
+                <% if(toDisplay <= index) { %>
+                    <div class="alert alert-primary" role="alert">
+                      Won: <%= PrintPlayers(game.firstWon,game.secondWon) %> 
+                      Lost: <%= PrintPlayers(game.firstLost,game.secondLost) %> </br>
+                      <%= game.date %>
+                    </div>
+                <% } %>
               <% }) %> 
 
     </div>

@@ -37,7 +37,13 @@ app.post("/",function(req,res){
             if(err) {
                 console.log(err) ;
             } else {
-                res.render("home",{ users: users, error: "true" });
+                Game.find({},function(err, games) {
+                   if(err) {
+                       console.log(err) ;
+                   } else {
+                       res.render("home",{ users: users, error: "true", games:games });
+                   }
+                });
             }
         });
     } else {
